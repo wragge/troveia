@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% set active_page = "register" %}
+{% block content %}
+      <div class="row">
+        <div class="col-md-12">
+          <h1 class="page-header">Troveia <small>Register your team</small></h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-8">
+          <form class="well" role="form" method="post" action="/register/">
+            <div class="form-group">
+              <label for="team_name">Team name</label>
+              {{ form.team(class="form-control", id="team_name", placeholder="Enter a cool team name") }}
+              {% if form.team.errors %}
+                {% for error in form.team.errors %}
+                  <div class="alert alert-danger form-error" role="alert">{{ error }}</div>
+                {% endfor %}
+              {% endif %}
+            </div>
+            <div class="form-group">
+              <label for="list_address">Trove list address</label>
+              {{ form.list_address(class="form-control", id="list_address", placeholder="Enter your list address") }}
+              {% if form.list_address.errors %}
+                {% for error in form.list_address.errors %}
+                  <div class="alert alert-danger form-error" role="alert">{{ error }}</div>
+                {% endfor %}
+              {% endif %}
+            </div>
+            <div class="form-group">
+              <label for="town">Town or suburb</label>
+              {{ form.town(class="form-control", id="town", placeholder="Your town or suburb") }}
+              {% if form.town.errors %}
+                {% for error in form.town.errors %}
+                  <div class="alert alert-danger form-error" role="alert">{{ error }}</div>
+                {% endfor %}
+              {% endif %}
+            </div>
+            <div class="form-group">
+              <label for="state">State (if in Australia)</label>
+              {{ form.state(class="form-control", id="state") }}
+              {% if form.state.errors %}
+                {% for error in form.state.errors %}
+                  <div class="alert alert-danger form-error" role="alert">{{ error }}</div>
+                {% endfor %}
+              {% endif %}
+            </div>
+            <div class="form-group">
+              <label for="country">Country</label>
+              {{ form.country(class="form-control", id="country") }}
+              {% if form.country.errors %}
+                {% for error in form.country.errors %}
+                  <div class="alert alert-danger form-error" role="alert">{{ error }}</div>
+                {% endfor %}
+              {% endif %}
+            </div>
+            <button type="submit" class="btn btn-success">Register</button>
+          </form>
+        </div>
+        <div class="col-md-4">
+          <h3>Registration instructions</h3>
+          <p>If you don't have one already, you'll need to <a href="https://trove.nla.gov.au/signup">sign up</a> for a Trove user account. Don't worry, <a href="http://help.nla.gov.au/trove/using-trove/creating-contributing/manage-your-account">it's easy</a>.</p>
+          <p>Login to your Trove user account and then <a target="_blank" href="http://trove.nla.gov.au/version/39131407">follow this link</a> (it'll open in a new tab).
+
+          <p>Scroll down to the bottom of the page and click on the 'Add to list' button. Type in a name to make a new list. Click on 'Add to list' to create the list and add the item. You'll use this list to store your Troveia answers.</p>
+
+          <p class="bg-danger"><b>It's very important that your list remain 'Public'.</b> If you change it to 'Private' our scoring bot won't be able to see it.</p>
+
+          <p>See the Trove help centre if you need more information on <a href="http://help.nla.gov.au/trove/using-trove/creating-contributing/lists">creating and using lists</a>.</p>
+
+          <p>Your should see your new list under the 'Lists' heading near the bottom of the page. Click on the link to visit your list.</p>
+
+          <p>You need to get a copy of your list's address to include in the registration form. Either copy the url from your browser's location box, or go to the the bottom of the list and click on 'Link to this page'. Copy the url displayed in the box.</p>
+
+          <p>Now you can fill in this team registration form. Give your team a name and then paste the link to your new list into the 'list address' box. Tell us where you're located so we can see you on the team map.</p>
+
+          <p>Click 'Register' and you'll be taken to the <a href="/teams/">teams page</a>, where your new team will be listed! (Although it may take up to an hour for your team to appear on the map.)</p>
+
+
+        </div>
+      </div>
+{% endblock %}

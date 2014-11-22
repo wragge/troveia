@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% set active_page = "teams" %}
+{% block extra_scripts %}
+  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+  <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+  <link rel="stylesheet" href="/static/css/MarkerCluster.css" />
+  <link rel="stylesheet" href="/static/css/MarkerCluster.Default.css" />
+  <script src="/static/js/leaflet.markercluster-src.js"></script>
+{% endblock %}
+{% block content %}
+      <div class="row">
+        <div class="col-md-12">
+          <h1 class="page-header">Troveia <small>Teams</small></h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            {% for message in messages %}
+              <div class="alert alert-success" role="alert">{{ message }}</div>
+            {% endfor %}
+            {% endif %}
+          {% endwith %}
+          <ul>
+            {% for team in teams %}
+              <li><a href="{{ url_for('team', team_id=team._id) }}">{{ team.team_name }}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="col-md-6">
+          <div id="map"></div>
+          <script type="text/javascript">
+
+            var tiles = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+              maxZoom: 18,
+              attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors, Points &copy 2012 LINZ'
+            }),
+            latlng = L.latLng(0, 0);
+
+            var map = L.map('map', {center: latlng, zoom: 1, layers: [tiles]});
+
+            var markers = L.markerClusterGroup();
+
+            var points = [
+            {% for team in teams.rewind() %}
+            {% if team.coords %}
+              [{{ team.coords[1] }}, {{ team.coords[0] }}, "{{ team.team_name }}", "{{ team._id }}"]{% if not loop.last %},{% endif %}
+            {% endif %}
+            {% endfor %}
+            ];
+
+            for (var i = 0; i < points.length; i++) {
+              var a = points[i];
+              var title = a[2];
+              var marker = L.marker(new L.LatLng(a[0], a[1]), { title: title });
+              marker.bindPopup('<a href="/teams/' + a[3] + '">' + title + '</a>');
+              markers.addLayer(marker);
+            }
+
+            map.addLayer(markers);
+
+          </script>
+        </div>
+      </div>
+{% endblock %}

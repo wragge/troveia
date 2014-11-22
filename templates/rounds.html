@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% set active_page = "rounds" %}
+{% block content %}
+      <div class="row">
+        <div class="col-md-12">
+          <h1 class="page-header">Troveia <small>Questions</small></h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-8">
+          <h2>Rounds</h2>
+          <ol>
+            {% for round in rounds %}
+              <li><a href="{{ url_for('round', round_num=round.number) }}">{{ round.topic }}</a></li>
+            {% endfor %}
+          </ol>
+        </div>
+        <div class="col-md-4">
+          <h3>Competition outline</h3>
+          <p>Once the competition is under way you'll be able access the questions from this page.</p>
+
+          <p>The questions will be made public one round at a time. There'll be six rounds, covering different parts of Trove. We'll make an announcement <a href="http://twitter.com/TroveAustralia">on Twitter</a> when we've opened each round (no, you don't have to have a Twitter account to view our feed).</p>
+
+          <p>Each round will be open for 10 minutes. We'll announce on Twitter when the round is closed and we'll run our scoring bot to check your answers and <a href="/scoreboard/">add up the scores</a>.</p>
+
+          <p>Once a round is closed, you'll be able to check the answers from this page.</p>
+          
+          <h3>Answering questions</h3>
+
+          <p>All the answers can be found by searching Trove. Once you've found the Trove resource that provides the answer, you'll need to add it to the Trove list you created at registration time.</p>
+
+          <p>To add an answer to your list just click on the 'Add to list' button at the bottom of the page, or in the left-hand column (for a newspaper article). Check the box next to your Troveia list. In the box that says 'Note' or 'Reason for adding this item' type in the answer to the question &ndash; it might be 'meteorology' or 'pygmy possum' for example. Click on 'Add to list' to save your answer.</p>
+          
+          <p>Continue until you've answered all the questions in the round or you've run out of time. Once the round is closed, our automatic scoring bot will check the contents of your list to see how many correct links you added.</p>
+
+          <p class="bg-danger"><b>Remember, it's very important that your list remain 'Public'.</b> If you change it to 'Private' our scoring bot won't be able to see it.</p>
+
+          <p>See the Trove help centre if you need more information on <a href="http://help.nla.gov.au/trove/using-trove/creating-contributing/lists">creating and using lists</a>.</p>
+
+        </div>
+      </div>
+{% endblock %}

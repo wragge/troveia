@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% set active_page = "welcome" %}
+{% block content %}
+      <div class="row">
+        <div class="col-md-12">
+          <div class="jumbotron row">
+            <div class="col-md-4 pull-right">
+              <a class="thumbnail" href="http://trove.nla.gov.au/version/39131407"><img src="/static/images/nla.pic-an23697892-v.jpg" class="img-responsive jumbotronwidth"></a>
+            </div>
+            <div class="col-md-8">
+              <h1>Welcome to Troveia</h1>
+              <p>It&rsquo;s Trove&rsquo;s fifth birthday and we&rsquo;re celebrating!</p>
+              <p>Troveia is a trivia competition where all the answers can be found in Trove &ndash; online searching is not only allowed, it's mandatory!</p>
+              <p>Join us here on Friday 21 <span class="strikethrough">November</span> Trovember from 7.00pm (AEDT).</p>
+              <a class="btn btn-success" href="/register/">Register your team now!</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <h3>What's Troveia</h3>
+          <p>Troveia is an online trivia competition. It's an opportunity to have some fun and explore Trove's vast content. Unlike most trivia competitions you'll have to use your search skills rather than just your memory. The answer to each question resides in a Trove record, find it and you'll <a href="/scoreboard/">score a point</a>.</p>
+          <h3>How to join in</h3>
+          <p>Just <a href="/register/">register a team</a> before kick off time. Then come back here on Friday night at 7.00pm to <a href="/rounds/">view the questions</a>.</p>
+
+          <p>Keep an eye on our <a href="http://twitter.com/TroveAustralia">Twitter feed</a> throughout the night for announcements, hints and special spot prizes.</p>
+        </div>
+        <div class="col-md-6 right-align">
+          <a class="twitter-timeline" href="https://twitter.com/hashtag/troveia" data-widget-id="533922355551035395">#troveia Tweets</a>
+          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+        </div>
+      </div>
+{% endblock %}

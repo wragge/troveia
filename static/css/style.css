@@ -1,0 +1,20 @@
+.table-nonfluid {
+   width: auto;
+}
+.navbar-brand-logo { padding: 10px 10px 10px 20px;}
+
+.right-align { text-align: right;}
+
+.results { margin-bottom: 40px;}
+
+.page-header { border-bottom: none;}
+
+.jumbotronwidth { max-width:100%; }
+
+.form-error { margin-top: 5px;}
+
+#map { height: 400px; }
+
+footer { margin-top: 80px; border-top: 1px solid #98978b; padding: 20px 0 20px 0;}
+
+.strikethrough { text-decoration: line-through; }

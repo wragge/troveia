@@ -1,0 +1,1 @@
+TROVE_API_KEY = '[insert your API key]'

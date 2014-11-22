@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% set active_page = "team" %}
+{% block content %}
+      <div class="row">
+        <div class="col-md-8">
+          <h1 class="page-header">Troveia <small>Teams</small></h1>
+          <h2>{{ team.team_name }}</h2>
+          <dl class="dl-horizontal">
+            <dt>Trove list</dt>
+            <dd><a href="{{ team.list_address }}</">{{ team.list_address }}</a></dd>
+            <dt>Location</dt>
+            <dd>{{ team.town }}{% if team.town %}, {% endif %}{{ team.state }}{% if team.state %}, {% endif %}{{ team.country }}</dd>
+          </dl>
+          {% if team.results %}
+            <div class="row results">
+              <div class="col-md-6">
+                <h3>Results</h3>
+              </div>
+              <div class="col-md-6 right-align">
+                <h3>Total score: {{ team.score }}</h3>
+              </div>
+            </div>
+            
+              {% for round, result in team.results|dictsort %}
+              <table class="table results">
+                <tr><th><h4>Round {{ round }}</h4></th><th class="right-align"><h4>Score: {{ result.score}}</h4></th></tr>
+                {% for question, result in result.results|dictsort %}
+                  <tr>
+                    <td>
+                      <h5>Question {{ question }}</h5>
+                      <p>
+                        {% if result.status %}
+                          <span class="text-muted">Link matched:</span> {{ result.link|urlize }}<br>
+                          <span class="text-muted">Answer given:</span> {{ result.answer }}<br>
+                        {% else %}
+                          <span class="text-muted">No matching link found.</span>
+                        {% endif %}
+                    </p>
+                    </td>
+                    <td class="right-align"><i class="fa {% if result.status %}fa-check-circle text-success{% else %}fa-times-circle text-danger{% endif %} fa-3x"></i></td></tr>
+                {% endfor %}
+              </table>
+              {% endfor %}
+            
+          {% endif %}
+        </div>
+      </div>
+{% endblock %}

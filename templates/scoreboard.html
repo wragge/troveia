@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% set active_page = "scoreboard" %}
+{% block content %}
+      <div class="row">
+        <div class="col-md-8">
+          <h1 class="page-header">Troveia <small>Scoreboard</small></h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-8">
+          <table class="table">
+            <tr><th>Team</th><th class="right-align">Score</th></tr>
+            {% for team in teams %}
+              <tr><td><a href="{{ url_for('team', team_id=team._id)}}">{{ team.team_name }}</a></td><td class="right-align"><span class="badge">{% if team.score %}{{ team.score }}{% else %}0{% endif %}</span></td></tr>
+
+            {% endfor %}
+          </table>
+        </div>
+        <div class="col-md-4">
+          <h3>Scoring</h3>
+          <p>Troveia is intended for fun rather than wealth or glory. There'll be some small prizes, but it's mostly just an opportunity to show off your Trove skills or learn a little bit more about our services and content. So please don't argue with the scoring bot.</p>
+
+          <p>We know our scoring system isn't foolproof, but it will give near-instant results. Our bot will simply compare the contents of your registered Trove list with our own list of answer links. The more correct links your list contains, the more points you get.</p>
+
+          <p>In the case of a tie, some human adjudication will be required. We'll look at the answers you added to the note field for each saved link and see how they compare to ours. (Any additional comments that amuse us will also be highly regarded.)</p>
+          
+          <p>There's lots of stuff in Trove and it may be possible that you find the answer to one of our questions somewhere we didn't expect. If that's the case, sorry &ndash; if the link doesn't match ours you don't get a point.</p>
+
+          <p>The scoreboard will list teams by number of points. It'll automatically update after each round. Click on your team to see your full results for each completed round.</p>
+
+        </div>
+      </div>
+{% endblock %}
